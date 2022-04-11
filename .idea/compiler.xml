@@ -6,12 +6,17 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="service-log" />
+        <module name="service-log (2)" />
         <module name="common-kafka" />
+        <module name="service-log (1)" />
         <module name="service-new-order" />
-        <module name="service-email" />
         <module name="service-fraude-detector" />
+        <module name="service-email" />
+        <module name="service-users" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="service-log" target="13" />
+    </bytecodeTargetLevel>
   </component>
 </project>

@@ -13,8 +13,6 @@ import java.util.UUID;
 import java.util.regex.Pattern;
 
 class KafkaService<T> implements Closeable {
-
-
     private final KafkaConsumer<String, T> consumer;
     private final ConsumerFunction parse;
 
@@ -40,7 +38,14 @@ class KafkaService<T> implements Closeable {
             if (!records.isEmpty()) {
                 System.out.println("Encontrei " + records.count() + " registros");
                 for (var record : records) {
-                    parse.consume(record);
+                    try {
+                        parse.consume(record);
+                    } catch (Exception e) {
+                        // only catches Exception because no matter which Exception
+                        // i want to recover and parse the next one
+                        // so far, just logging the exception for this message
+                        e.printStackTrace();
+                    }
                 }
             }
         }
